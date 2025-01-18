@@ -1,0 +1,58 @@
+﻿
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سامانه تغذیه</title>
+    <link rel="stylesheet" href="~/styles/login/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>سامانه تغذیه</h1>
+    </header>
+    <main>
+        <section class="announcement">
+            <p>
+                فعال بودن سلف دانشگاه در روز شنبه ۲۲ دی
+                <br>
+                به اطلاع کلیه دانشجویان گرامی می‌رساند سلف دانشگاه در روز شنبه ۲۲ دی ماه آماده خدمت رسانی به دانشجویان
+                عزیز می‌باشد.
+            </p>
+        </section>
+        <section class="login-box">
+            <div class="icon">
+                <img src="~/styles/login/loginPic.png" alt="آیکون قاشق و چنگال" />
+            </div>
+            <form>
+                <input type="text" placeholder="شماره دانشجویی">
+                <input type="password" placeholder="کلمه عبور">
+                <button type="submit">ورود</button>
+            </form>
+            <a asp-controller="Account" asp-action="ResetPassword"><p class="forgot-password">گذرواژه خود را فراموش کرده‌ام</p></a>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-info">
+            name            
+            <br>
+            version
+        </div>
+        <div class="footer-links">
+            <a href="#">راهنما</a> | <a href="#">منوی اصلی سایت دانشگاه</a>
+        </div>
+        <div class="footer-contact">
+            <p>phone number</p>
+            <p>email</p>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+.padding-left10 {
+    padding-left: 10px;
+}
+
+.clr {
+    clear: both;
+}
+
+#navigation {
+    width: 100%;
+    z-index: 100;
+}
+
+.mainContent {
+    margin-top: 3px; /* در کد اول 20px بود و در کد دوم 3px شده است*/
+    padding: 0 15px;
+}

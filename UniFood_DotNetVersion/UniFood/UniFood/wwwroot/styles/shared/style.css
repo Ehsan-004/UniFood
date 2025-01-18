@@ -1,0 +1,136 @@
+﻿body {
+    font-family: 'IRANSans(FaNum) Medium', sans-serif;
+    background-color: #fcf8ef;
+    direction: rtl;
+}
+
+.container-fluid {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.panel-headingGreen {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    align-items: center;
+}
+
+.panel-title {
+    margin: 0;
+}
+
+.panel-body {
+    padding: 10px;
+    background-color: white;
+}
+
+.TitleTXT {
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.greyColor {
+    color: grey;
+}
+
+
+.logoSty {
+    max-width: 50px;
+    height: auto;
+}
+
+.navSty {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.TopStrip {
+    background-color: #4CAF50;
+    height: 5px;
+}
+
+.navbar-custom {
+    border: none;
+    margin-bottom: 0;
+}
+
+.navbar-nav>li>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    font-family: 'IRANSans(FaNum) Medium';
+}
+
+.navbar-toggle {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    border: none;
+    background-color: transparent;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #333;
+}
+
+.nav-expand {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+}
+
+.nav-expand img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    margin-left: 10px;
+}
+
+.mainPage {
+    padding: 10px 10px 0 10px;
+}
+
+.panel-default1 {
+    border: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.features-container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.homeLinkCont {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.homeLinkdiv {
+    margin-bottom: 10px;
+    text-align: center;
+    width: calc(50% - 10px);
+    box-sizing: border-box;
+    padding: 5px;
+}
+
+.homeLink {
+    display: block;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
+}
+
+.homeLink:hover {
+    background-color: #45a049;
+}

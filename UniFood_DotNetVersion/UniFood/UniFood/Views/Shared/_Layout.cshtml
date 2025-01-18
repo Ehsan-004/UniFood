@@ -1,49 +1,110 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>@ViewData["Title"] - UniFood</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true"/>
-    <link rel="stylesheet" href="~/UniFood.styles.css" asp-append-version="true"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه اصلی</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/styles/mainPage/MainPage.css">
+    <link rel="stylesheet" href="~/styles/shared/style.css">
+    @RenderSection("styles", required:false)
 </head>
+
 <body>
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container-fluid">
-            <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">UniFood</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                    </li>
-                </ul>
-            </div>
+
+
+<div class="navSty">
+    <header id="section1" class="parallax-slider">
+        <div id="navigation">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 TopStrip"></div>
+            <nav class="navbar navbar-custom" role="navigation">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand visible-xs" href="#">منو</a>
+                    </div>
+                    <div class="nav-expand">
+                        <div class="collapse navbar-collapse" id="menu"> <!--- منوی اصلی -->
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a href="/Account/LogOut" id="l0o">خروج</a></li>
+                                <li><a href="/IdGenerator">فراموشی کارت</a></li>
+                                <li><a href="/ChangePasswords/ManageCard">مدیریت کارت</a></li>
+                                <li><a href="/ChangePasswords">تغییر رمز</a></li>
+                                <li><a href="/UserHome/ShowTransactions">تراکنش ها</a></li>
+                                <li><a href="/Eshop/TransferCredit">انتقال اعتبار</a></li>
+                                <li><a href="/Eshop/IncreaseCredit">افزایش اعتبار</a></li>
+                                <li><a href="/Reserves">رزرو</a></li>
+                                <li><a href="/UserHome/Index2">خانه</a></li>
+                                <li>
+                                    <a href="#" id="iconLink" style="padding: 0;">
+                                        <img src="~/styles/shared/icon.png" alt="آیکون" style="width: 35px; height: 35px; padding: 0;">
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="display: flex; align-items: center; margin-left: 10px;">
+                                @RenderSection("profiile", required:true)
+                                
+                        </div>
+                    </div>
+                </div>
+            </nav>
         </div>
-    </nav>
-</header>
-<div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
+    </header>
 </div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2025 - UniFood - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+@RenderBody()
+
+<div class="features-container">
+    <div>
+        <div id="localDate"></div>
     </div>
+    <div>
+        <div id="digitalClock"></div>
+    </div>
+</div>
+
+<footer class="text-center" style="margin-top: 20px; padding: 10px; background-color: #eee;">
+    <p>&copy; تمامی حقوق محفوظ است.</p>
 </footer>
-<script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="~/js/site.js" asp-append-version="true"></script>
-@await RenderSectionAsync("Scripts", required: false)
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script>
+        function updateClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            const timeString = `${hours}:${minutes}:${seconds}`;
+            document.getElementById('digitalClock').textContent = timeString;
+
+            const options = { year: 'numeric', month: 'numeric', day: 'numeric' };
+            document.getElementById('localDate').textContent = now.toLocaleDateString('fa-IR', options);
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock(); // برای نمایش اولیه ساعت
+
+        $(document).ready(function () {
+            $('.navbar-toggle').click(function () {
+                $('.navbar-collapse').toggleClass('in');
+            });
+        });
+    </script>
+    @RenderSection("scripts", required:false)
 </body>
+
 </html>

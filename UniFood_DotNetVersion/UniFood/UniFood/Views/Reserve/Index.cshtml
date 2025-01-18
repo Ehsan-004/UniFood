@@ -1,0 +1,386 @@
+﻿@{
+ViewBag.Title = "title";
+Layout = "_Layout";
+}
+
+@section styles
+{
+<style>
+    .flex-items {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .flex-items>input select {
+        width: 30%;
+    }
+
+    body {
+        font-family: 'IRANSans(FaNum) Medium', sans-serif;
+        background-color: #fcf8ef;
+        direction: rtl;
+        /* راست به چپ */
+    }
+
+    /* استایل‌های عمومی */
+    .container-fluid {
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .panel-headingGreen {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        border-radius: 5px 5px 0 0;
+        display: flex;
+        /* برای تراز وسط عنوان و آیکون */
+        align-items: center;
+    }
+
+    .panel-title {
+        margin: 0;
+    }
+
+    .panel-body {
+        padding: 10px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .TitleTXT {
+        font-weight: bold;
+        margin-right: 5px;
+    }
+
+    .greyColor {
+        color: grey;
+    }
+
+    .padding-left10 {
+        padding-left: 10px;
+    }
+
+    .clr {
+        clear: both;
+    }
+
+    .mainContent {
+        margin-top: 20px;
+        padding: 0 15px;
+        /* برای جلوگیری از چسبیدن محتوا به کناره‌ها در موبایل */
+    }
+
+    .logoSty {
+        /* position: absolute;
+        top: 10px;
+        /* فاصله از بالای صفحه */
+        /* right: 10px; */
+        /* فاصله از سمت راست صفحه */
+        max-width: 50px;
+        /* یا اندازه دلخواه */
+        height: auto;
+    }
+
+    .navSty {
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        /* سایه به نوار بالا */
+    }
+
+    .TopStrip {
+        background-color: #4CAF50;
+        height: 5px;
+    }
+
+    .navbar-custom {
+        border: none;
+        margin-bottom: 0;
+    }
+
+    .navbar-nav>li>a {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        font-family: 'IRANSans(FaNum) Medium';
+    }
+
+    .navbar-toggle {
+        margin-top: 25px;
+        margin-bottom: 25px;
+        border: none;
+        background-color: transparent;
+    }
+
+    .navbar-toggle .icon-bar {
+        background-color: #333;
+        /* رنگ خطوط منو */
+    }
+
+    .nav-expand {
+        display: flex;
+        justify-content: space-between;
+        /* برای تراز کردن دو طرف */
+        align-items: center;
+        /* تراز کردن عمودی */
+        padding: 10px 15px;
+        /* کمی padding برای زیبایی */
+    }
+
+    .nav-expand img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        margin-left: 10px;
+    }
+
+    .mainPage {
+        padding: 10px 10px 0 10px;
+    }
+
+    .panel-default1 {
+        border: none;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .features-container {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+        flex-wrap: wrap;
+        /* برای نمایش در یک خط در موبایل */
+    }
+
+    /* استایل‌های بخش لینک‌های صفحه اصلی */
+    .homeLinkCont {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 20px;
+    }
+
+    .homeLinkdiv {
+        margin-bottom: 10px;
+        text-align: center;
+        width: calc(50% - 10px);
+        /* برای دو ستون در دسکتاپ */
+        box-sizing: border-box;
+        /* برای محاسبه درست عرض با padding */
+        padding: 5px;
+    }
+
+    .homeLink {
+        display: block;
+        padding: 10px 20px;
+        background-color: #4CAF50;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        width: 100%;
+        box-sizing: border-box;
+        transition: background-color 0.3s ease;
+        /* انیمیشن برای hover */
+    }
+
+    .homeLink:hover {
+        background-color: #45a049;
+        /* رنگ hover */
+    }
+
+
+    /* tableeeeeeeeee */
+    /* واکنش‌گرا کردن */
+    .menu {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 10px;
+        width:100%;
+        box-sizing: border-box;
+        /* max-width: 1200px; افزایش حداکثر عرض برای دسکتاپ */
+        margin: 20px auto;
+    }
+
+    .restaurant-info {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* استایل‌های جدول برای حالت دسکتاپ */
+    .desktop-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .desktop-table th,
+    .desktop-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: center;
+        white-space: nowrap;
+        /* جلوگیری از شکستن خط در سلول‌ها */
+    }
+
+    .desktop-table th {
+        background-color: #607D8B;
+        color: #eee;
+        font-weight: bold;
+    }
+
+    /* مخفی کردن منوی موبایل در حالت دسکتاپ */
+    .mobile-menu {
+        display: none;
+    }
+
+    /* Media Query برای حالت موبایل */
+   
+</style>
+}
+
+@section profiile
+{
+<img src="~/user_.jpg" alt="عکس پروفایل" class="logoSty">
+<div style="display: flex; flex-direction: column; margin-right: 10px;">
+    <span>احسان خلوصی</span>
+    <div>
+        <span>اعتبار رزرو: </span>
+        <span id="headerCredit">0</span>
+        <span> ریال</span>
+    </div>
+    <span>@DateTime.Today.Date</span>
+</div>
+}
+
+
+<div class="mainContent">
+    <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="mainPage">
+                <div class="panel panel-default1">
+                    <div class="panel-headingGreen">
+                        <h4 class="panel-title">رزرو <i class="fa fa-info fa-WhiteColor"
+                                                        style="padding-right: 10px;"></i></h4>
+                    </div>
+
+                    <div class="panel-body">
+                        <h3 style="direction: rtl; width: 60%;">گروه افراد</h3>
+                        <div class="flex-items" style="width: 60%;">
+                            <select name="" id="">
+                                <option>first</option>
+                            </select>
+                            <input type="text">
+                        </div>
+                        <p>گروه خود را انتخاب کنید</p>
+                        <div class="menu">
+                            <div class="restaurant-info">
+                                <h2>رستوران : سلف اصلی برادران</h2>
+                                <p>اصلی برادران</p>
+                            </div>
+
+                            <table class="desktop-table">
+                                <thead>
+                                <tr>
+                                    <th>روز هفته</th>
+                                    <th>شنبه</th>
+                                    <th>یکشنبه</th>
+                                    <th>دوشنبه</th>
+                                    <th>سه شنبه</th>
+                                    <th>چهارشنبه</th>
+                                    <th>پنج شنبه</th>
+                                    <th>جمعه</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>
+                                        <p>نهار</p>
+                                        <p>قیمت یارانه ای</p>
+                                    </td>
+                                    <td>
+                                        <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label>
+                                        <input type="checkbox" value="" id="d">
+                                    </td>
+                                    <td>
+                                        <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label>
+                                        <input type="checkbox" value="" id="d">
+                                    </td>
+                                    <td>
+                                        <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label>
+                                        <input type="checkbox" value="" id="d">
+                                    </td>
+                                    <td>
+                                        <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label>
+                                        <input type="checkbox" value="" id="d">
+                                    </td>
+                                    <td>
+                                        <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label>
+                                        <input type="checkbox" value="" id="d">
+                                    </td>
+                                    <td>
+                                        <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label>
+                                        <input type="checkbox" value="" id="d">
+                                    </td>
+                                    <td>
+                                        <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label>
+                                        <input type="checkbox" value="" id="d">
+                                    </td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="mobile-menu"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section scripts
+{
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const desktopTable = document.querySelector('.desktop-table tbody');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        if (desktopTable && mobileMenu) {
+            const rows = desktopTable.querySelectorAll('tr');
+
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const dayCells = document.querySelectorAll(".desktop-table thead tr th");
+                for (let i = 0; i < dayCells.length - 1; i++) {
+                    const mobileMenuItem = document.createElement('div');
+                    mobileMenuItem.classList.add("mobile-menu-item");
+                    const day = document.createElement('div');
+                    day.classList.add("day");
+                    day.textContent = dayCells[i].textContent;
+                    const foodList = document.createElement("ul");
+                    foodList.classList.add("food-list");
+                    const food = document.createElement("li");
+                    food.textContent = cells[i].textContent;
+                    const meal = document.createElement("div");
+                    meal.classList.add("meal");
+                    meal.textContent = cells[dayCells.length - 1].textContent;
+                    foodList.appendChild(food);
+                    mobileMenuItem.appendChild(day);
+                    mobileMenuItem.appendChild(foodList);
+                    mobileMenuItem.appendChild(meal);
+                    mobileMenu.appendChild(mobileMenuItem);
+                }
+            });
+        }
+    });
+</script>
+}

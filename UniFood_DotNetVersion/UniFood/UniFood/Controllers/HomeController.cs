@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
 using UniFood.Models;
 
@@ -15,10 +16,30 @@ public class HomeController : Controller
 
     public IActionResult Index()
     {
+        var isAuthenticated = HttpContext.User.Identity.IsAuthenticated;
+        if (!isAuthenticated)
+        {
+            
+        }
         return View();
     }
 
-    public IActionResult Privacy()
+    [HttpGet]
+    public IActionResult Reserve()
+    {
+        return View();
+    }
+
+    public IActionResult Test()
+    {
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        var userName = User.FindFirst(ClaimTypes.Name)?.Value;
+        var isAuthenticated = User.Identity.IsAuthenticated;
+        
+        return Json(new { userId=userId,name=userName, isAuthenticated=isAuthenticated });
+    }
+
+public IActionResult Privacy()
     {
         return View();
     }
