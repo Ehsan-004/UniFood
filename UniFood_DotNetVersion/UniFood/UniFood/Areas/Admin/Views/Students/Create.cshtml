@@ -1,0 +1,73 @@
+﻿@using UniFood.Data.Enum
+@model UniFood.ViewModels.StudentUserViewModel
+
+
+<div class="content-wrap">
+    <div class="main">
+        <div class="container-fluid">
+            <!-- /# row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="basic-elements">
+                                <form method="post" asp-area="Admin" asp-controller="Students" asp-action="Create">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            
+                                            <div class="form-group">
+                                                <label>شماره دانشجویی</label>
+                                                <br>
+                                                <input asp-for="UniStudentId" class="form-control" placeholder="شماره دانشجویی">
+                                                <span asp-validation-for="UniStudentId"></span>
+                                            </div>
+                                            <br>
+
+                                            <div class="form-group">
+                                                <label>مقطع تحصیلی</label>
+                                                <br>
+                                                <select
+                                                    asp-for="EducationLevel"
+                                                    class="form-control"
+                                                    asp-items="@Html.GetEnumSelectList<EducationLevel>()">
+                                                </select>
+                                                <span asp-validation-for="EducationLevel"></span>
+                                            </div>
+                                            <br>
+
+                                            <div class="form-group">
+                                                <label>رشته تحصیلی</label>
+                                                <br>
+                                                <select
+                                                    asp-for="Major"
+                                                    class="form-control"
+                                                    asp-items="@Html.GetEnumSelectList<Major>()">
+                                                </select>
+                                                <span asp-validation-for="Major"></span>
+                                            </div>
+                                            <br>
+
+                                            <div class="form-group">
+                                                <label>دانشکده</label>
+                                                <br>
+                                                <select
+                                                    asp-for="Faculty"
+                                                    class="form-control"
+                                                    asp-items="@Html.GetEnumSelectList<Faculty>()">
+                                                </select>
+                                                <span asp-validation-for="Faculty"></span>
+                                            </div>
+                                            <br>
+                                            
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary btn-default">Create</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

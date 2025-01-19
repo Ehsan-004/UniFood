@@ -1,10 +1,10 @@
-﻿using UniFood.Data.Enum;
+﻿using Microsoft.AspNetCore.Identity;
+using UniFood.Data.Enum;
 
 namespace UniFood.Models;
 
-public class Student 
+public class Student : IdentityUser
 {
-    public int Id { get; set; }
     public int UniStudentId { get; set; }
     public string ProfileImagePath { get; set; }
     public EducationLevel EducationLevel { get; set; } = EducationLevel.Bachelor;
@@ -12,5 +12,5 @@ public class Student
     public Major Major { get; set; }
     public Faculty Faculty { get; set; }
     
-    public ICollection<StudentReserve> StudentReserves { get; set; }
+    // public ICollection<StudentReserve> StudentReserves { get; set; }
 }

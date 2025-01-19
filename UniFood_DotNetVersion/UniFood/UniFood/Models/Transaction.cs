@@ -10,6 +10,6 @@ public class Transaction
     public float Amount { get; set; }
     public int ActionId { get; set; } // If reserve, reserve id and if increase credit, its id ...
     
-    public int StudentId { get; set; }
+    public string StudentId { get; set; }
     public Student Student { get; set; }
 }
