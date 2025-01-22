@@ -7,7 +7,7 @@
 
 <div class="content-wrap">
     <div class="main">
-        <div class="album py-5 bg-light">
+        <div class="album py-5 bg-light">   
             <div class="container-fluid">
                 <!-- rows -->
                 <div class="table-wrapper">
@@ -15,6 +15,7 @@
                         <thead>
                         <tr>
                             @* <th>Id</th> *@
+                            <th>نام و نام خانوادگی</th>
                             <th>شماره دانشجویی</th>
                             <th>مقطع تحصیلی</th>
                             <th>اعتبار</th>
@@ -29,21 +30,22 @@
                             {
                                 <tr>
                                     @* <td>@item.Id</td> *@
+                                    <td>@item.FirstName @item.LastName</td>
                                     <td>@item.UniStudentId</td>
                                     <td>@item.EducationLevel</td>
                                     <td>@item.Credit</td>
                                     <td>
                                         @* <a class="btn btn-view">See</a> *@
                                         <a asp-area="Admin"
-                                           asp-controller="Foods"
+                                           asp-controller="Students"
                                            asp-action="Edit"
                                            class="btn btn-primary btn-edit"
-                                           asp-route-id="@item.Id">Edit</a>
+                                           asp-route-username="@item.UserName">Edit</a>
 
                                         <a asp-area="Admin"
-                                           asp-controller="Foods"
+                                           asp-controller="Students"
                                            asp-action="Delete"
-                                           asp-route-id="@item.Id"
+                                           asp-route-username="@item.UserName"
                                            class="btn btn-danger btn-delete">Delete</a>
                                     </td>
                                 </tr>

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UniFood.Models.Context;
 
@@ -11,9 +12,11 @@ using UniFood.Models.Context;
 namespace UniFood.Migrations
 {
     [DbContext(typeof(UfContext))]
-    partial class UfContextModelSnapshot : ModelSnapshot
+    [Migration("20250121183712_Student_changed")]
+    partial class Student_changed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

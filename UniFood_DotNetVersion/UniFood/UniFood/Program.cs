@@ -22,10 +22,11 @@ builder.Services.AddDbContext<UfContext>(options =>
 // Authentication
 builder.Services.AddIdentity<Student, IdentityRole>(options =>
     {
-        options.Password.RequireDigit = true; // نیاز به حداقل یک عدد
-        options.Password.RequireLowercase = true; // نیاز به حداقل یک حرف کوچک
-        options.Password.RequireNonAlphanumeric = true; // نیاز به حداقل یک کاراکتر خاص (!@#$%^&*)
-        options.Password.RequiredLength = 8; // حداقل طول رمز عبور
+        options.Password.RequireDigit = true; 
+        options.Password.RequireLowercase = false;
+        options.Password.RequireUppercase = false;
+        options.Password.RequireNonAlphanumeric = false;
+        options.Password.RequiredLength = 10;
     })
     .AddEntityFrameworkStores<UfContext>();
 
@@ -41,7 +42,27 @@ builder.Services.AddAuthorization(options =>
 
 
 
+// async Task SeedRoles(RoleManager<IdentityRole> roleManager)
+// {
+//     var roles = new[] { "Admin", "Student" };
+//
+//     foreach (var role in roles)
+//     {
+//         if (!await roleManager.RoleExistsAsync(role))
+//         {
+//             await roleManager.CreateAsync(new IdentityRole(role));
+//         }
+//     }
+// }
+
+
 var app = builder.Build();
+
+// using (var scope = app.Services.CreateScope())
+// {
+//     var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+//     await SeedRoles(roleManager);
+// }
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -63,6 +84,7 @@ if (!app.Environment.IsDevelopment())
 //     if (!await roleManager.RoleExistsAsync("Admin"))
 //     {
 //         await roleManager.CreateAsync(new IdentityRole("Admin"));
+//         await roleManager.CreateAsync(new IdentityRole("Student"));
 //     }
 //
 //     var adminName = "Admin";

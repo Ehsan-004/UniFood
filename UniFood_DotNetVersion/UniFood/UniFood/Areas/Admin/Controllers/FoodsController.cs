@@ -40,8 +40,8 @@ public class FoodsController : Controller
 
     public IActionResult Edit(int id)
     {
-        var url = _context.GetFood(id);
-        return View(url);
+        var food = _context.GetFood(id);
+        return View(food);
     }
 
     [HttpPost]
