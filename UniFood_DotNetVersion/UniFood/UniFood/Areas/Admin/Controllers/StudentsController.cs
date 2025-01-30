@@ -91,24 +91,39 @@ public class StudentsController : Controller
     public async Task<IActionResult> Edit(string username)
     {
         var student = await _context.FindByNameAsync(username);
-        return View(student);
+        var studentViewModel = new StudentUserViewModel()
+        {
+            UniStudentId = student.UniStudentId,
+            FirstName = student.FirstName,
+            LastName = student.LastName,
+            DateOfBirth = student.DateOfBirth,
+            Gender = student.Gender,
+            Major = student.Major,
+            Faculty = student.Faculty,
+            EducationLevel = student.EducationLevel,
+        };
+        return View(studentViewModel);
     }
     
-    [HttpPost]
-    public async Task<IActionResult> Edit(Student student)
-    {
-        if (!ModelState.IsValid) return View(student);
-        
-        var result = await _context.UpdateAsync(student);
-        
-        if (result.Succeeded)
-            return RedirectToAction("Index"); 
-        
-        foreach (var error in result.Errors)
-            _logger.LogError($"Code: {error.Code}, Description: {error.Description}");
-
-        return View(student);
-    }
+    // [HttpPost]
+    // public async Task<IActionResult> Edit(StudentUserViewModel studentViewModel)
+    // {
+    //     if (!ModelState.IsValid) return View(studentViewModel);
+    //     
+    //     var student = _context.FindByNameAsync(studentViewModel.UniStudentId);
+    //     
+    //     student.Major = studentViewModel.Major;
+    //     
+    //     var result = await _context.UpdateAsync(student);
+    //     
+    //     if (result.Succeeded)
+    //         return RedirectToAction("Index"); 
+    //     
+    //     foreach (var error in result.Errors)
+    //         _logger.LogError($"Code: {error.Code}, Description: {error.Description}");
+    //
+    //     return View(student);
+    // }
     
     public async Task<IActionResult> Delete(string username)
     {

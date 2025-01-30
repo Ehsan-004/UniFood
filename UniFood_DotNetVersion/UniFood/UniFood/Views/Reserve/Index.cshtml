@@ -1,11 +1,11 @@
 ﻿@{
-ViewBag.Title = "title";
-Layout = "_Layout";
+    ViewBag.Title = "title";
+    Layout = "_Layout";
 }
 
 @section styles
 {
-<style>
+    <style>
     .flex-items {
         display: flex;
         flex-direction: row;
@@ -242,16 +242,16 @@ Layout = "_Layout";
 
 @section profiile
 {
-<img src="~/user_.jpg" alt="عکس پروفایل" class="logoSty">
-<div style="display: flex; flex-direction: column; margin-right: 10px;">
-    <span>احسان خلوصی</span>
-    <div>
-        <span>اعتبار رزرو: </span>
-        <span id="headerCredit">0</span>
-        <span> ریال</span>
+    <img src="~/user_.jpg" alt="عکس پروفایل" class="logoSty">
+    <div style="display: flex; flex-direction: column; margin-right: 10px;">
+        <span>احسان خلوصی</span>
+        <div>
+            <span>اعتبار رزرو: </span>
+            <span id="headerCredit">0</span>
+            <span> ریال</span>
+        </div>
+        <span>@DateTime.Today.Date</span>
     </div>
-    <span>@DateTime.Today.Date</span>
-</div>
 }
 
 
@@ -268,8 +268,10 @@ Layout = "_Layout";
                     <div class="panel-body">
                         <h3 style="direction: rtl; width: 60%;">گروه افراد</h3>
                         <div class="flex-items" style="width: 60%;">
-                            <select name="" id="">
-                                <option>first</option>
+                            <select name="" id="foodDropDown">
+                                <option value="0">انتخاب کنید</option>
+                                <option value="1">سلف اصلی</option>
+                                <option value="2">سلف مکمکل</option>
                             </select>
                             <input type="text">
                         </div>
@@ -280,57 +282,57 @@ Layout = "_Layout";
                                 <p>اصلی برادران</p>
                             </div>
 
-                            <table class="desktop-table">
-                                <thead>
-                                <tr>
-                                    <th>روز هفته</th>
-                                    <th>شنبه</th>
-                                    <th>یکشنبه</th>
-                                    <th>دوشنبه</th>
-                                    <th>سه شنبه</th>
-                                    <th>چهارشنبه</th>
-                                    <th>پنج شنبه</th>
-                                    <th>جمعه</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        <p>نهار</p>
-                                        <p>قیمت یارانه ای</p>
-                                    </td>
-                                    <td>
-                                        <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label>
-                                        <input type="checkbox" value="" id="d">
-                                    </td>
-                                    <td>
-                                        <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label>
-                                        <input type="checkbox" value="" id="d">
-                                    </td>
-                                    <td>
-                                        <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label>
-                                        <input type="checkbox" value="" id="d">
-                                    </td>
-                                    <td>
-                                        <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label>
-                                        <input type="checkbox" value="" id="d">
-                                    </td>
-                                    <td>
-                                        <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label>
-                                        <input type="checkbox" value="" id="d">
-                                    </td>
-                                    <td>
-                                        <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label>
-                                        <input type="checkbox" value="" id="d">
-                                    </td>
-                                    <td>
-                                        <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label>
-                                        <input type="checkbox" value="" id="d">
-                                    </td>
-
-                                </tr>
-                                </tbody>
-                            </table>
+                            @* <table class="desktop-table"> *@
+                            @*     <thead> *@
+                            @*     <tr> *@
+                            @*         <th>روز هفته</th> *@
+                            @*         <th>شنبه</th> *@
+                            @*         <th>یکشنبه</th> *@
+                            @*         <th>دوشنبه</th> *@
+                            @*         <th>سه شنبه</th> *@
+                            @*         <th>چهارشنبه</th> *@
+                            @*         <th>پنج شنبه</th> *@
+                            @*         <th>جمعه</th> *@
+                            @*     </tr> *@
+                            @*     </thead> *@
+                            @*     <tbody> *@
+                            @*     <tr> *@
+                            @*         <td> *@
+                            @*             <p>نهار</p> *@
+                            @*             <p>قیمت یارانه ای</p> *@
+                            @*         </td> *@
+                            @*         <td> *@
+                            @*             <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label> *@
+                            @*             <input type="checkbox" value="" id="d"> *@
+                            @*         </td> *@
+                            @*         <td> *@
+                            @*             <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label> *@
+                            @*             <input type="checkbox" value="" id="d"> *@
+                            @*         </td> *@
+                            @*         <td> *@
+                            @*             <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label> *@
+                            @*             <input type="checkbox" value="" id="d"> *@
+                            @*         </td> *@
+                            @*         <td> *@
+                            @*             <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label> *@
+                            @*             <input type="checkbox" value="" id="d"> *@
+                            @*         </td> *@
+                            @*         <td> *@
+                            @*             <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label> *@
+                            @*             <input type="checkbox" value="" id="d"> *@
+                            @*         </td> *@
+                            @*         <td> *@
+                            @*             <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label> *@
+                            @*             <input type="checkbox" value="" id="d"> *@
+                            @*         </td> *@
+                            @*         <td> *@
+                            @*             <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label> *@
+                            @*             <input type="checkbox" value="" id="d"> *@
+                            @*         </td> *@
+                            @* *@
+                            @*     </tr> *@
+                            @*     </tbody> *@
+                            @* </table> *@
 
                             <div class="mobile-menu"></div>
                         </div>
@@ -345,11 +347,40 @@ Layout = "_Layout";
 
 @section scripts
 {
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    @* <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> *@
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="jQuery.js"></script>
+    <script>
+    const dropdown = document.getElementById("foodDropDown");
+    
+    dropdown.addEventListener('change', function (){
+    let selectedOption = this.value;
+    if (selectedOption == 0)
+    {
+    }
+    else if (selectedOption == 1)
+    {
+        $.ajax({
+            url: '@Url.Action("GetFoods", "Reserve")',
+        method: "GET",
+        //data: { "url": new_url, "userId": userId},
+        success: function (data) {
+        let foods = data.foods;
+            alert("got the foods")
+            alert(foods)
+        },
+        error: function () { alert("something is going wrong!") } 
+        });
+    }
+    else
+    {
+    }
+        
+        })
+</script>
 
 
-<script>
+    <script>
     document.addEventListener('DOMContentLoaded', function () {
         const desktopTable = document.querySelector('.desktop-table tbody');
         const mobileMenu = document.querySelector('.mobile-menu');
