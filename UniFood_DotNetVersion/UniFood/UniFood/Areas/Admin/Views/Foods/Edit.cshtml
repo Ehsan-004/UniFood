@@ -1,4 +1,5 @@
-﻿@model UniFood.Models.Food
+﻿@using UniFood.Data.Enum
+@model UniFood.Models.Food
 
 
 <div class="content-wrap">
@@ -14,18 +15,35 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label>نام غذا</label>
+                                                <label asp-for="Name"></label>
                                                 <br>
                                                 <input asp-for="Name" class="form-control" placeholder="Name" value="@Model.Name">
                                                 <span asp-validation-for="Name"></span>
                                             </div>
                                             <br>
                                             <div class="form-group">
-                                                <label>قیمت غذا</label>
+                                                <label asp-for="Price"></label>
                                                 <br>
                                                 <input asp-for="Price" class="form-control" placeholder="Name" value="@Model.Price">
                                                 <span asp-validation-for="Price"></span>
                                             </div>
+                                            <br>
+
+                                            <div class="form-group">
+                                                <label asp-for="Day"></label>
+                                                <br>
+                                                <select asp-items="@Html.GetEnumSelectList<Day>()" asp-for="Day" class="form-control"></select>
+                                                <span asp-validation-for="Day"></span>
+                                            </div>
+                                            <br>
+
+                                            <div class="form-group">
+                                                <label asp-for="IsActive"></label>
+                                                <br>
+                                                <input asp-for="IsActive" type="checkbox" class="form-control">
+                                                <span asp-validation-for="IsActive"></span>
+                                            </div>
+                                            <br>
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-secondary btn-default">Edit</button>

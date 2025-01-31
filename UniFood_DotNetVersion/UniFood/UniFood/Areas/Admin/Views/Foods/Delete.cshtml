@@ -1,4 +1,6 @@
-﻿@model UniFood.Models.Food
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using UniFood.Data.Enum
+@model UniFood.Models.Food
 
 
 <div class="content-wrap">
@@ -23,6 +25,24 @@
                                                 <label>قیمت غذا</label>
                                                 <br>
                                                 <input asp-for="Price" class="form-control" placeholder="Name" value="@Model.Price" readonly>
+                                            </div>
+                                            <br>
+                                            <div class="form-group">
+                                                <label asp-for="Day"></label>
+                                                <br>
+                                                <select 
+                                                    disabled
+                                                    asp-for="Day"
+                                                    class="form-control"
+                                                    asp-items="@Html.GetEnumSelectList<Day>()"></select>
+                                                <span asp-validation-for="Day"></span>
+                                            </div>
+                                            <br>
+                                            <div class="form-group">
+                                                <label asp-for="IsActive"></label>
+                                                <br>
+                                                <input type="checkbox" asp-for="IsActive" checked>
+                                                <span asp-validation-for="Day"></span>
                                             </div>
                                         </div>
                                     </div>

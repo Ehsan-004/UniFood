@@ -17,6 +17,8 @@
                             @* <th>Id</th> *@
                             <th>نام غذا</th>
                             <th>قیمت غذا</th>
+                            <th>غذا ارائه میشود</th>
+                            <th>روز ارائه غذا</th>
                             <th><a class="btn btn-secondary" asp-area="Admin" asp-controller="Foods" asp-action="Create">افزودن</a></th>
                             @* <th><a href="Categories/Create/">Create</a></th> *@
                         </tr>
@@ -30,6 +32,8 @@
                             @* <td>@item.Id</td> *@
                             <td>@item.Name</td>
                             <td>@item.Price</td>
+                            <td>@item.IsActive</td>
+                            <td>@item.Day</td>
                             <td>
                                 @* <a class="btn btn-view">See</a> *@
                                 <a asp-area="Admin"

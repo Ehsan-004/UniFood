@@ -1,4 +1,5 @@
-﻿@model UniFood.Models.Food
+﻿@using UniFood.Data.Enum
+@model UniFood.Models.Food
 
 
 <div class="content-wrap">
@@ -14,18 +15,36 @@
                                     <div class="row">
                                         <div class="col-lg-12">
                                             <div class="form-group">
-                                                <label>نام غذا</label>
+                                                <label asp-for="Name"></label>
                                                 <br>
                                                 <input asp-for="Name" class="form-control" placeholder="Name">
                                                 <span asp-validation-for="Name"></span>
                                             </div>
                                             <br>
                                             <div class="form-group">
-                                                <label>قیمت غذا</label>
+                                                <label asp-for="Price"></label>
                                                 <br>
                                                 <input asp-for="Price" class="form-control" placeholder="Name">
                                                 <span asp-validation-for="Price"></span>
                                             </div>
+                                            <br>
+                                            <div class="form-group">
+                                                <label asp-for="Day"></label>
+                                                <br>
+                                                <select
+                                                    asp-for="Day"
+                                                    class="form-control"
+                                                    asp-items="@Html.GetEnumSelectList<Day>()"></select>
+                                                <span asp-validation-for="Day"></span>
+                                            </div>
+                                            <br>
+                                            <div class="form-group">
+                                                <label asp-for="IsActive"></label>
+                                                <br>
+                                                <input type="checkbox" asp-for="IsActive" checked>
+                                                <span asp-validation-for="Day"></span>
+                                            </div>
+                                            
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary btn-default">Create</button>

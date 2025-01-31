@@ -20,9 +20,10 @@ public class ReserveController : Controller
     public IActionResult GetFoods()
     {
         var foods = _foodRepository.GetFoods();
-        return Json(new
+        var data = new
         {
             foods = foods
-        });
+        };
+        return Json(data);
     }
 }

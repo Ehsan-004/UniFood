@@ -234,7 +234,10 @@
     .mobile-menu {
         display: none;
     }
-
+    
+    .food-label{
+        display: block;
+    }
     /* Media Query برای حالت موبایل */
    
 </style>
@@ -282,60 +285,11 @@
                                 <p>اصلی برادران</p>
                             </div>
 
-                            @* <table class="desktop-table"> *@
-                            @*     <thead> *@
-                            @*     <tr> *@
-                            @*         <th>روز هفته</th> *@
-                            @*         <th>شنبه</th> *@
-                            @*         <th>یکشنبه</th> *@
-                            @*         <th>دوشنبه</th> *@
-                            @*         <th>سه شنبه</th> *@
-                            @*         <th>چهارشنبه</th> *@
-                            @*         <th>پنج شنبه</th> *@
-                            @*         <th>جمعه</th> *@
-                            @*     </tr> *@
-                            @*     </thead> *@
-                            @*     <tbody> *@
-                            @*     <tr> *@
-                            @*         <td> *@
-                            @*             <p>نهار</p> *@
-                            @*             <p>قیمت یارانه ای</p> *@
-                            @*         </td> *@
-                            @*         <td> *@
-                            @*             <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label> *@
-                            @*             <input type="checkbox" value="" id="d"> *@
-                            @*         </td> *@
-                            @*         <td> *@
-                            @*             <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label> *@
-                            @*             <input type="checkbox" value="" id="d"> *@
-                            @*         </td> *@
-                            @*         <td> *@
-                            @*             <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label> *@
-                            @*             <input type="checkbox" value="" id="d"> *@
-                            @*         </td> *@
-                            @*         <td> *@
-                            @*             <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label> *@
-                            @*             <input type="checkbox" value="" id="d"> *@
-                            @*         </td> *@
-                            @*         <td> *@
-                            @*             <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label> *@
-                            @*             <input type="checkbox" value="" id="d"> *@
-                            @*         </td> *@
-                            @*         <td> *@
-                            @*             <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label> *@
-                            @*             <input type="checkbox" value="" id="d"> *@
-                            @*         </td> *@
-                            @*         <td> *@
-                            @*             <label for="d">چلو کباب کوبیده ۱۵۰,۰۰۰</label> *@
-                            @*             <input type="checkbox" value="" id="d"> *@
-                            @*         </td> *@
-                            @* *@
-                            @*     </tr> *@
-                            @*     </tbody> *@
-                            @* </table> *@
+                            <div id="foodTable"></div>
 
                             <div class="mobile-menu"></div>
                         </div>
+                        <button style="background-color: #607D8B; color: white; padding: 10px 20px; font-size: 2.5rem;">ثبت</button>
                     </div>
                 </div>
             </div>
@@ -351,8 +305,65 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="jQuery.js"></script>
     <script>
+    function createTable(foods){
+        var tableParent = document.getElementById("foodTable");
+        let table = document.createElement("table");
+        table.classList.add("desktop-table");
+        let tableHead = document.createElement("thead");
+        let headerRow = document.createElement("tr");
+        
+        const days = ["روز هفته", "شنبه", "یکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنج شنبه", "جمعه"];
+        days.forEach(day => {
+            const th = document.createElement("th");
+            th.textContent = day;
+            headerRow.appendChild(th);
+        });
+        
+        tableHead.appendChild(headerRow);
+        table.appendChild(tableHead);
+        
+        let tableBody = document.createElement("tbody");
+        let dataRow = document.createElement("tr");
+        
+        let titleBlock = document.createElement("td");
+        let title = document.createElement("p")
+        title.textContent = "نهار \n قیمت یارانه ای"
+        titleBlock.appendChild(title);
+        dataRow.appendChild(titleBlock);
+        tableBody.appendChild(dataRow)
+        table.appendChild(tableBody);
+
+        const sortedFoods = [[], [], [], [], [], [], []]; // 7 ردیف برای هر روز از شنبه تا جمعه
+
+        foods.forEach(food => {
+            sortedFoods[food.day].push(food); // غذاها رو به ترتیب روز داخل آرایه قرار میدیم
+        });
+
+        // ✅ اضافه کردن غذاها به روزهای مختلف جدول
+        for (let i = 0; i < 7; i++) {
+            let td = document.createElement("td");
+            sortedFoods[i].forEach(food => {
+                let foodDiv = document.createElement("div");
+                foodDiv.classList.add("food-label");
+                
+                let label = document.createElement("label");
+                label.textContent = `${food.name} ${food.price}`;
+                let check = document.createElement("input");
+                check.type = "checkbox"
+                foodDiv.appendChild(label);
+                foodDiv.appendChild(check);
+                
+                td.appendChild(foodDiv); // اضافه کردن هر غذا به سلول مربوطه
+            });
+            dataRow.appendChild(td);
+        }
+        
+        tableParent.appendChild(table)
+    }
+
+
     const dropdown = document.getElementById("foodDropDown");
-    
+
     dropdown.addEventListener('change', function (){
     let selectedOption = this.value;
     if (selectedOption == 0)
@@ -362,21 +373,20 @@
     {
         $.ajax({
             url: '@Url.Action("GetFoods", "Reserve")',
-        method: "GET",
-        //data: { "url": new_url, "userId": userId},
-        success: function (data) {
-        let foods = data.foods;
-            alert("got the foods")
-            alert(foods)
-        },
+            method: "GET",
+            success: function (data) {
+                alert(JSON.stringify(data))
+                var foods = data.foods;
+                createTable(foods);
+            },
         error: function () { alert("something is going wrong!") } 
         });
     }
-    else
-    {
+    else {
     }
-        
-        })
+    
+    })
+
 </script>
 
 
