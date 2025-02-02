@@ -239,6 +239,13 @@
         display: block;
     }
     /* Media Query برای حالت موبایل */
+    
+    .button-confirm{
+        background-color: #607D8B; 
+        color: white; 
+        padding: 10px 20px; 
+        font-size: 2.5rem;
+    }
    
 </style>
 }
@@ -289,7 +296,10 @@
 
                             <div class="mobile-menu"></div>
                         </div>
-                        <button style="background-color: #607D8B; color: white; padding: 10px 20px; font-size: 2.5rem;">ثبت</button>
+                        <div id="confirm">
+                            
+                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -359,6 +369,14 @@
         }
         
         tableParent.appendChild(table)
+        
+        var butParent = document.getElementById("confirm");
+        var but = document.createElement("button");
+        but.classList.add("button-confirm");
+        but.textContent = "ثبت";
+        
+        butParent.appendChild(but);
+        
     }
 
 
